@@ -1,10 +1,10 @@
 import Sequelize, { Model } from 'sequelize';
 
-class CharacterUnlock extends Model {
+class CharacterPassive extends Model {
 	static init(sequelize) {
 		super.init(
-			{ level: Sequelize.INTEGER },
-			{ sequelize, tableName: 'characterUnlock' }
+			{ name: Sequelize.STRING },
+			{ sequelize, modelName: 'characterPassive' }
 		);
 		return this;
 	}
@@ -14,4 +14,4 @@ class CharacterUnlock extends Model {
 	}
 }
 
-export default CharacterUnlock;
+export default CharacterPassive;

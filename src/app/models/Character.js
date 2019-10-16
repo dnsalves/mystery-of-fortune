@@ -9,13 +9,13 @@ class Character extends Model {
 				att: Sequelize.SMALLINT,
 				mag: Sequelize.SMALLINT,
 				def: Sequelize.SMALLINT,
-				m_def: Sequelize.SMALLINT,
+				mDef: Sequelize.SMALLINT,
 				speed: Sequelize.SMALLINT,
 				critical: Sequelize.SMALLINT,
 				ratio: Sequelize.SMALLINT,
 				range: Sequelize.SMALLINT,
-				weapon_id: Sequelize.INTEGER,
-				passive_id: Sequelize.INTEGER,
+				weaponId: Sequelize.INTEGER,
+				passiveId: Sequelize.INTEGER,
 			},
 			{ sequelize, modelName: 'character' }
 		);
@@ -23,11 +23,9 @@ class Character extends Model {
 		return this;
 	}
 
-	// static associate(models) {
-	// 	models.map(m => m.name === 'CharacterUnlock' && this.hasMany(m));
-	// }
 	static associate(models) {
 		this.hasMany(models.CharacterUnlock);
+		this.hasOne(models.characterPassive);
 	}
 }
 

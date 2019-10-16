@@ -3,10 +3,11 @@ import mongoose from 'mongoose';
 
 import Character from '../app/models/Character';
 import CharacterUnlock from '../app/models/CharacterUnlock';
+import CharacterPassive from '../app/models/CharacterPassive';
 
 import databaseConfig from '../config/database';
 
-const models = [Character, CharacterUnlock];
+const models = [Character, CharacterUnlock, CharacterPassive];
 
 class Database {
 	constructor() {

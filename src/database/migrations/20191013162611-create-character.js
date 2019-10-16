@@ -1,6 +1,6 @@
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable('characters', {
+		return queryInterface.createTable('character', {
 			id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
@@ -19,14 +19,14 @@ module.exports = {
 			range: { type: Sequelize.SMALLINT, allowNull: false },
 			passive_id: {
 				type: Sequelize.INTEGER,
-				references: { model: 'charactersPassives', key: 'id' },
+				references: { model: 'characterPassive', key: 'id' },
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE',
 				allowNull: false,
 			},
 			weapon_id: {
 				type: Sequelize.INTEGER,
-				references: { model: 'charactersWeapons', key: 'id' },
+				references: { model: 'characterWeapon', key: 'id' },
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE',
 				allowNull: false,
@@ -37,6 +37,6 @@ module.exports = {
 	},
 
 	down: queryInterface => {
-		return queryInterface.dropTable('characters');
+		return queryInterface.dropTable('character');
 	},
 };

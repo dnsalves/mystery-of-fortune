@@ -1,6 +1,6 @@
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable('charactersUnlocks', {
+		return queryInterface.createTable('characterUnlock', {
 			id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
@@ -9,7 +9,7 @@ module.exports = {
 			},
 			character_id: {
 				type: Sequelize.INTEGER,
-				references: { model: 'characters', key: 'id' },
+				references: { model: 'character', key: 'id' },
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE',
 				allowNull: false,
@@ -24,6 +24,6 @@ module.exports = {
 	},
 
 	down: queryInterface => {
-		return queryInterface.dropTable('charactersUnlocks');
+		return queryInterface.dropTable('characterUnlock');
 	},
 };

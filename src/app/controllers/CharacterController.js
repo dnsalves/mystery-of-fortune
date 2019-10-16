@@ -1,4 +1,6 @@
 import Character from '../models/Character';
+import CharacterUnlock from '../models/CharacterUnlock';
+import CharacterPassive from '../models/CharacterPassive';
 
 class CharacterController {
 	async store(req, res) {
@@ -8,9 +10,26 @@ class CharacterController {
 	}
 
 	async index(req, res) {
-		const user = await Character.findByPk(1, {
-			include: [{ all: true }],
-		});
+		const { id, name } = req.params;
+
+		let user = new Character();
+		if (id > 0) {
+			user = await Character.findByPk(id, {
+				include: [
+					// { model: CharacterPassive },
+					{
+						model: CharacterUnlock,
+						include: [{ model: Character, attributes: ['id', 'class'] }],
+					},
+				],
+			});
+		} else if (name) {
+			user = await Character.findAll({
+				where: { class: name },
+				include: [{ model: CharacterUnlock }],
+			});
+		}
+
 		return res.json(user);
 	}
 }
