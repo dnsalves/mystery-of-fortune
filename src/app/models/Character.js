@@ -25,7 +25,10 @@ class Character extends Model {
 
 	static associate(models) {
 		this.hasMany(models.CharacterUnlock);
-		this.hasOne(models.characterPassive);
+		this.hasOne(models.characterPassive, {
+			sourceKey: 'passiveId',
+			foreignKey: 'id',
+		});
 	}
 }
 

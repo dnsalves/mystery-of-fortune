@@ -9,5 +9,6 @@ module.exports = {
 		underscored: true,
 		underscoredAll: true,
 		freezeTableName: true,
+		paranoid: true,
 	},
 };

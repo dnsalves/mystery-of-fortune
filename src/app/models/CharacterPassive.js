@@ -8,10 +8,6 @@ class CharacterPassive extends Model {
 		);
 		return this;
 	}
-
-	static associate(models) {
-		this.belongsTo(models.character);
-	}
 }
 
 export default CharacterPassive;
